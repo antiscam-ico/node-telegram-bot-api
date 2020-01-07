@@ -59,7 +59,7 @@
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-mocha": "^4.11.0",
     "is": "^3.2.1",
-    "is-ci": "^1.0.10",
+    "is-ci": "^2.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "jsdoc-to-markdown": "^3.0.3",
     "mocha": "^3.5.3",
