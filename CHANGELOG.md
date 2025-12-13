@@ -3,56 +3,64 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.68.0][0.68.0] - UNRELEASE
+## [Unreleased][Unreleased]
 
-1. Support Telegram Bot API 9.1 (@danielperez9430)
-   * sendChecklist
-   * editMessageChecklist
-   * getMyStarBalance
+Added:
 
-2. Support Telegram Bot API 9.0 (@danielperez9430)
-   * readBusinessMessage
-   * deleteBusinessMessages
-   * setBusinessAccountName
-   * setBusinessAccountUsername
-   * setBusinessAccountBio
-   * setBusinessAccountProfilePhoto
-   * removeBusinessAccountProfilePhoto
-   * setBusinessAccountGiftSettings
-   * getBusinessAccountStarBalance
-   * transferBusinessAccountStars
-   * getBusinessAccountGifts
-   * convertGiftToStars
-   * upgradeGift
-   * transferGift
-   * postStory
-   * editStory
-   * deleteStory
-   * giftPremiumSubscription
-
-3. Support Telegram Bot API 8.2 and 8.3 (@danielperez9430)
-   * verifyUser
-   * verifyChat
-   * removeUserVerification
-   * removeChatVerification
-
-4. Support Telegram Bot API 8.0 and 8.1
-   * savePreparedInlineMessage (@IsmailBinMujeeb & @danielperez9430)
-   * setUserEmojiStatus (@danielperez9430)
-   * editUserStarSubscription (@danielperez9430)
-   * getAvailableGifts (@danielperez9430)
-   * sendGift (@danielperez9430)
-
-5. Support Telegram Bot API 7.10 (@danielperez9430)
-  * Update: `purchased_paid_media`
-
+1. Support Telegram Bot API v7.4 (by @danielperez9430)
+   * `#refundStarPayment`
 6. Support Telegram Bot API 7.6 (@danielperez9430)
-   * sendPaidMedia
+   * `#sendPaidMedia`
+1. Support Telegram Bot API v7.9 (by @danielperez9430)
+1. Support Telegram Bot API v7.10 (by @danielperez9430)
+   * Update: `purchased_paid_media`
+1. Support Telegram Bot API v8.0 and v8.1
+   * `#savePreparedInlineMessage` (@IsmailBinMujeeb)
+   * `#setUserEmojiStatus` (@danielperez9430)
+   * `#editUserStarSubscription` (@danielperez9430)
+   * `#getAvailableGifts` (@danielperez9430)
+   * `#sendGift` (@danielperez9430)
+1. Support Telegram Bot API v8.2, v8.3 (@danielperez9430)
+   * `#verifyUser`
+   * `#verifyChat`
+   * `#removeUserVerification`
+   * `#removeChatVerification`
+1. Support Telegram Bot API v8.3 (by @danielperez9430)
+1. Support Telegram Bot API v9.0 (by @danielperez9430)
+   * `#readBusinessMessage`
+   * `#deleteBusinessMessages`
+   * `#setBusinessAccountName`
+   * `#setBusinessAccountUsername`
+   * `#setBusinessAccountBio`
+   * `#setBusinessAccountProfilePhoto`
+   * `#removeBusinessAccountProfilePhoto`
+   * `#setBusinessAccountGiftSettings`
+   * `#getBusinessAccountStarBalance`
+   * `#transferBusinessAccountStars`
+   * `#getBusinessAccountGifts`
+   * `#convertGiftToStars`
+   * `#upgradeGift`
+   * `#transferGift`
+   * `#postStory`
+   * `#editStory`
+   * `#deleteStory`
+   * `#giftPremiumSubscription`
+1. Support Telegram Bot API v9.1 (by @danielperez9430)
+   * `#sendChecklist`
+   * `#editMessageChecklist`
+   * `#getMyStarBalance`
 
-## [0.67.0][0.67.0] - 2024-05-30
+Fixed:
 
-1. Support Telegram Bot API 7.4 (@danielperez9430)
-  * refundStarPayment
+1. Reference causing error in `FatalError` (by @ivanjh)
+1. Stringify `scope` field in `#deleteMyCommands` (by @XC-Zhang)
+1. Stringify `allowed_updates` field in `#getUpdates` (by @alfanzain)
+1. Stringify `message_ids` in `#forwardMessages` (by @qiaoshouzi)
+1. Rename parameter `thumb` to `thumbnail` (by @0x114514BB)
+1. Remove travis badge (by @melroy89)
+1. Improve documentation on events (by @programminghoch10)
+1. Fix Telegram invite group link (by @melroy89)
+
   
 ## [0.66.0][0.66.0] - 2024-05-03
 
@@ -562,4 +570,9 @@ Fixed:
 [0.28.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.28.0
 [0.29.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.29.0
 [0.30.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.30.0
-[Unreleased]:https://github.com/yagop/node-telegram-bot-api/compare/v0.30.0...master
+[0.63.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.63.0
+[0.64.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.64.0
+[0.65.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.65.0
+[0.65.1]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.65.1
+[0.66.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.66.0
+[Unreleased]:https://github.com/yagop/node-telegram-bot-api/compare/v0.66.0...master
