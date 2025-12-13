@@ -61,7 +61,7 @@ TelegramBot
         * [.sendChecklist(businessConnectionId, chatId, checklist, [options])](#TelegramBot+sendChecklist) ⇒ <code>Promise</code>
         * [.sendDice(chatId, [options])](#TelegramBot+sendDice) ⇒ <code>Promise</code>
         * [.sendChatAction(chatId, action, [options])](#TelegramBot+sendChatAction) ⇒ <code>Promise</code>
-        * [.setMessageReaction(chatId, messageId, [options])](#TelegramBot+setMessageReaction) ⇒ <code>[ &#x27;Promise&#x27; ].&lt;Boolean&gt;</code>
+        * [.setMessageReaction(chatId, messageId, [options])](#TelegramBot+setMessageReaction) ⇒ <code>Promise.&lt;Boolean&gt;</code>
         * [.getUserProfilePhotos(userId, [options])](#TelegramBot+getUserProfilePhotos) ⇒ <code>Promise</code>
         * [.setUserEmojiStatus(userId, [options])](#TelegramBot+setUserEmojiStatus) ⇒ <code>Promise</code>
         * [.getFile(fileId, [options])](#TelegramBot+getFile) ⇒ <code>Promise</code>
@@ -161,7 +161,7 @@ TelegramBot
         * [.setGameScore(userId, score, [options])](#TelegramBot+setGameScore) ⇒ <code>Promise</code>
         * [.getGameHighScores(userId, [options])](#TelegramBot+getGameHighScores) ⇒ <code>Promise</code>
         * [.deleteMessage(chatId, messageId, [options])](#TelegramBot+deleteMessage) ⇒ <code>Promise</code>
-        * [.deleteMessages(chatId, messageIds, [options])](#TelegramBot+deleteMessages) ⇒ <code>[ &#x27;Promise&#x27; ].&lt;Boolean&gt;</code>
+        * [.deleteMessages(chatId, messageIds, [options])](#TelegramBot+deleteMessages) ⇒ <code>Promise.&lt;Boolean&gt;</code>
         * [.getAvailableGifts([options])](#TelegramBot+getAvailableGifts) ⇒ <code>Promise</code>
         * [.sendGift(giftId, [options])](#TelegramBot+sendGift) ⇒ <code>Promise</code>
         * [.giftPremiumSubscription(userId, monthCount, starCount, [options])](#TelegramBot+giftPremiumSubscription) ⇒ <code>Promise</code>
@@ -188,7 +188,7 @@ TelegramBot
         * [.deleteStory(businessConnectionId, storyId, [options])](#TelegramBot+deleteStory) ⇒ <code>Promise</code>
     * _static_
         * [.errors](#TelegramBot.errors) : <code>Object</code>
-        * [.messageTypes](#TelegramBot.messageTypes) : <code>[ &#x27;Array&#x27; ].&lt;String&gt;</code>
+        * [.messageTypes](#TelegramBot.messageTypes) : <code>Array.&lt;String&gt;</code>
 
 <a name="new_TelegramBot_new"></a>
 
@@ -209,7 +209,7 @@ Emits `message` when a message arrives.
 | [options.polling.autoStart] | <code>Boolean</code> | <code>true</code> | Start polling immediately |
 | [options.polling.params] | <code>Object</code> |  | Parameters to be used in polling API requests.  See https://core.telegram.org/bots/api#getupdates for more information. |
 | [options.polling.params.timeout] | <code>Number</code> | <code>10</code> | Timeout in seconds for long polling. |
-| [options.polling.params.allowed_updates] | <code>Array</code> \| <code>String</code> |  | A JSON-serialized list of the update types you want your bot to receive.  For example, specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. |
+| [options.polling.params.allowed_updates] | <code>Array.&lt;String&gt;</code> \| <code>String</code> |  | A JSON-serialized list of the update types you want your bot to receive.  For example, specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. |
 | [options.webHook] | <code>Boolean</code> \| <code>Object</code> | <code>false</code> | Set true to enable WebHook or set options |
 | [options.webHook.host] | <code>String</code> | <code>&quot;0.0.0.0&quot;</code> | Host to bind to |
 | [options.webHook.port] | <code>Number</code> | <code>8443</code> | Port to bind to |
@@ -601,7 +601,7 @@ If some of the specified messages can't be found or forwarded, they are skipped.
 | --- | --- | --- |
 | chatId | <code>Number</code> \| <code>String</code> | Unique identifier for the target chat or username of the target channel (in the format `@channelusername`) or username of the target channel (in the format `@channelusername`) |
 | fromChatId | <code>Number</code> \| <code>String</code> | Unique identifier for the chat where the original message was sent (or channel username in the format `@channelusername`) |
-| messageIds | <code>[ &#x27;Array&#x27; ].&lt;(Number\|String)&gt;</code> | Identifiers of 1-100 messages in the chat from_chat_id to forward. The identifiers must be specified in a strictly increasing order. |
+| messageIds | <code>Array.&lt;(Number\|String)&gt;</code> | Identifiers of 1-100 messages in the chat from_chat_id to forward. The identifiers must be specified in a strictly increasing order. |
 | [options] | <code>Object</code> | Additional Telegram query options |
 
 <a name="TelegramBot+copyMessage"></a>
@@ -994,14 +994,14 @@ Use this method when you need to tell the user that something is happening on th
 
 <a name="TelegramBot+setMessageReaction"></a>
 
-### telegramBot.setMessageReaction(chatId, messageId, [options]) ⇒ <code>[ &#x27;Promise&#x27; ].&lt;Boolean&gt;</code>
+### telegramBot.setMessageReaction(chatId, messageId, [options]) ⇒ <code>Promise.&lt;Boolean&gt;</code>
 Use this method to change the chosen reactions on a message.
 - Service messages can't be reacted to.
 - Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel.
 - In albums, bots must react to the first message.
 
 **Kind**: instance method of [<code>TelegramBot</code>](#TelegramBot)  
-**Returns**: <code>[ &#x27;Promise&#x27; ].&lt;Boolean&gt;</code> - True on success  
+**Returns**: <code>Promise.&lt;Boolean&gt;</code> - True on success  
 **See**: https://core.telegram.org/bots/api#setmessagereaction  
 
 | Param | Type | Description |
@@ -2419,7 +2419,7 @@ Note: No more than 50 results per query are allowed.
 | Param | Type | Description |
 | --- | --- | --- |
 | inlineQueryId | <code>String</code> | Unique identifier of the query |
-| results | <code>[ &#x27;Array&#x27; ].&lt;InlineQueryResult&gt;</code> | An array of results for the inline query |
+| results | <code>Array.&lt;InlineQueryResult&gt;</code> | An array of results for the inline query |
 | [options] | <code>Object</code> | Additional Telegram query options |
 
 <a name="TelegramBot+answerWebAppQuery"></a>
@@ -2642,17 +2642,17 @@ Use this method to delete a message, including service messages, with the follow
 
 <a name="TelegramBot+deleteMessages"></a>
 
-### telegramBot.deleteMessages(chatId, messageIds, [options]) ⇒ <code>[ &#x27;Promise&#x27; ].&lt;Boolean&gt;</code>
+### telegramBot.deleteMessages(chatId, messageIds, [options]) ⇒ <code>Promise.&lt;Boolean&gt;</code>
 Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped.
 
 **Kind**: instance method of [<code>TelegramBot</code>](#TelegramBot)  
-**Returns**: <code>[ &#x27;Promise&#x27; ].&lt;Boolean&gt;</code> - True on success  
+**Returns**: <code>Promise.&lt;Boolean&gt;</code> - True on success  
 **See**: https://core.telegram.org/bots/api#deletemessages  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | chatId | <code>Number</code> \| <code>String</code> | Unique identifier for the target chat or username of the target channel (in the format @channelusername) |
-| messageIds | <code>[ &#x27;Array&#x27; ].&lt;(Number\|String)&gt;</code> | Identifiers of 1-100 messages to delete. See deleteMessage for limitations on which messages can be deleted |
+| messageIds | <code>Array.&lt;(Number\|String)&gt;</code> | Identifiers of 1-100 messages to delete. See deleteMessage for limitations on which messages can be deleted |
 | [options] | <code>Object</code> | Additional Telegram query options |
 
 <a name="TelegramBot+getAvailableGifts"></a>
@@ -2786,7 +2786,7 @@ Requires the **can_delete_outgoing_messages** business bot right to delete messa
 | Param | Type | Description |
 | --- | --- | --- |
 | businessConnectionId | <code>String</code> | Unique identifier of the business connection on behalf of which to delete the message. |
-| messageIds | <code>[ &#x27;Array&#x27; ].&lt;Number&gt;</code> | List of 1-100 identifiers of messages to delete. All messages **must be from the same chat**. |
+| messageIds | <code>Array.&lt;Number&gt;</code> | List of 1-100 identifiers of messages to delete. All messages **must be from the same chat**. |
 | [options] | <code>Object</code> | Additional Telegram query options. |
 
 <a name="TelegramBot+setBusinessAccountName"></a>
@@ -3053,7 +3053,7 @@ The different errors the library uses.
 **Kind**: static property of [<code>TelegramBot</code>](#TelegramBot)  
 <a name="TelegramBot.messageTypes"></a>
 
-### TelegramBot.messageTypes : <code>[ &#x27;Array&#x27; ].&lt;String&gt;</code>
+### TelegramBot.messageTypes : <code>Array.&lt;String&gt;</code>
 The types of message updates the library handles.
 
 **Kind**: static property of [<code>TelegramBot</code>](#TelegramBot)  
