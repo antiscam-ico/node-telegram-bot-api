@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][Unreleased]
 
+## [0.67.0][0.67.0] - 2025-12-13
+
 Added:
 
 1. Support Telegram Bot API v7.4 (by @danielperez9430)
@@ -575,4 +577,5 @@ Fixed:
 [0.65.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.65.0
 [0.65.1]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.65.1
 [0.66.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.66.0
-[Unreleased]:https://github.com/yagop/node-telegram-bot-api/compare/v0.66.0...master
+[0.67.0]:https://github.com/yagop/node-telegram-bot-api/releases/tag/v0.67.0
+[Unreleased]:https://github.com/yagop/node-telegram-bot-api/compare/v0.67.0...master
