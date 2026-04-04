@@ -1899,6 +1899,34 @@ Use this method to get information about the connection of the bot with a busine
 | businessConnectionId | <code>Number</code> \| <code>String</code> | Unique identifier for the group/channel |
 | [options] | <code>Object</code> | Additional Telegram query options |
 
+<a name="TelegramBot+getManagedBotToken"></a>
+
+### telegramBot.getManagedBotToken(userId, [options]) ⇒ <code>Promise</code>
+Use this method to get the token of a managed bot.
+
+**Kind**: instance method of [<code>TelegramBot</code>](#TelegramBot)  
+**Returns**: <code>Promise</code> - On success, returns the token of the managed bot as String  
+**See**: https://core.telegram.org/bots/api#getmanagedbottoken  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| userId | <code>Number</code> \| <code>String</code> | User identifier of the managed bot whose token will be returned |
+| [options] | <code>Object</code> | Additional Telegram query options |
+
+<a name="TelegramBot+replaceManagedBotToken"></a>
+
+### telegramBot.replaceManagedBotToken(userId, [options]) ⇒ <code>Promise</code>
+Use this method to revoke the current token of a managed bot and generate a new one.
+
+**Kind**: instance method of [<code>TelegramBot</code>](#TelegramBot)  
+**Returns**: <code>Promise</code> - On success, returns the token of the managed bot as String  
+**See**: https://core.telegram.org/bots/api#replacemanagedbottoken  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| userId | <code>Number</code> \| <code>String</code> | User identifier of the managed bot whose token will be replaced |
+| [options] | <code>Object</code> | Additional Telegram query options |
+
 <a name="TelegramBot+setMyCommands"></a>
 
 ### telegramBot.setMyCommands(commands, [options]) ⇒ <code>Promise</code>

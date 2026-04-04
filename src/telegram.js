@@ -2528,6 +2528,32 @@ class TelegramBot extends EventEmitter {
   }
 
   /**
+   * Use this method to get the token of a managed bot.
+   *
+   * @param {Number|String} userId  User identifier of the managed bot whose token will be returned
+   * @param {Object} [options] Additional Telegram query options
+   * @return {Promise} On success, returns the token of the managed bot as String
+   * @see https://core.telegram.org/bots/api#getmanagedbottoken
+   */
+  getManagedBotToken(userId, form = {}) {
+    form.user_id = userId;
+    return this._request('getManagedBotToken', { form });
+  }
+
+  /**
+   * Use this method to revoke the current token of a managed bot and generate a new one.
+   *
+   * @param {Number|String} userId  User identifier of the managed bot whose token will be replaced
+   * @param {Object} [options] Additional Telegram query options
+   * @return {Promise} On success, returns the token of the managed bot as String
+   * @see https://core.telegram.org/bots/api#replacemanagedbottoken
+   */
+  replaceManagedBotToken(userId, form = {}) {
+    form.user_id = userId;
+    return this._request('replaceManagedBotToken', { form });
+  }
+
+  /**
    * Use this method to change the list of the bot's commands.
    *
    * See https://core.telegram.org/bots#commands for more details about bot commands

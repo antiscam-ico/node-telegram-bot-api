@@ -29,9 +29,9 @@
     "node": ">=0.12"
   },
   "dependencies": {
-    "@cypress/request": "^3.0.8",
+    "@cypress/request": "^3.0.10",
     "@cypress/request-promise": "^5.0.0",
-    "array.prototype.findindex": "^2.0.2",
+    "array.prototype.findindex": "^2.2.4",
     "bl": "^1.2.3",
     "debug": "^3.2.7",
     "eventemitter3": "^3.0.0",
