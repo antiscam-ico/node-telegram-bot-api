@@ -113,8 +113,11 @@ TelegramBot
         * [.unpinAllGeneralForumTopicMessages(chatId, [options])](#TelegramBot+unpinAllGeneralForumTopicMessages) ⇒ <code>Promise</code>
         * [.answerCallbackQuery(callbackQueryId, [options])](#TelegramBot+answerCallbackQuery) ⇒ <code>Promise</code>
         * [.savePreparedInlineMessage(userId, result, [options])](#TelegramBot+savePreparedInlineMessage) ⇒ <code>Promise</code>
+        * [.savePreparedKeyboardButton(userId, button, [options])](#TelegramBot+savePreparedKeyboardButton) ⇒ <code>Promise</code>
         * [.getUserChatBoosts(chatId, userId, [options])](#TelegramBot+getUserChatBoosts) ⇒ <code>Promise</code>
         * [.getBusinessConnection(businessConnectionId, [options])](#TelegramBot+getBusinessConnection) ⇒ <code>Promise</code>
+        * [.getManagedBotToken(userId, [options])](#TelegramBot+getManagedBotToken) ⇒ <code>Promise</code>
+        * [.replaceManagedBotToken(userId, [options])](#TelegramBot+replaceManagedBotToken) ⇒ <code>Promise</code>
         * [.setMyCommands(commands, [options])](#TelegramBot+setMyCommands) ⇒ <code>Promise</code>
         * [.deleteMyCommands([options])](#TelegramBot+deleteMyCommands) ⇒ <code>Promise</code>
         * [.getMyCommands([options])](#TelegramBot+getMyCommands) ⇒ <code>Promise</code>
@@ -1867,6 +1870,21 @@ Use this method to stores a message that can be sent by a user of a Mini App.
 | --- | --- | --- |
 | userId | <code>Number</code> | Unique identifier of the target user |
 | result | <code>InlineQueryResult</code> | object that represents one result of an inline query |
+| [options] | <code>Object</code> | Optional form data to include in the request |
+
+<a name="TelegramBot+savePreparedKeyboardButton"></a>
+
+### telegramBot.savePreparedKeyboardButton(userId, button, [options]) ⇒ <code>Promise</code>
+Use this method to stores a message that can be sent by a user of a Mini App.
+
+**Kind**: instance method of [<code>TelegramBot</code>](#TelegramBot)  
+**Returns**: <code>Promise</code> - On success, returns a [PreparedKeyboardButton](https://core.telegram.org/bots/api#preparedkeyboardbutton) object.  
+**See**: https://core.telegram.org/bots/api#savepreparedkeyboardbutton  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| userId | <code>Number</code> | Unique identifier of the target user |
+| button | <code>KeyboardButton</code> | A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot. |
 | [options] | <code>Object</code> | Optional form data to include in the request |
 
 <a name="TelegramBot+getUserChatBoosts"></a>

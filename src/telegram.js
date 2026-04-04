@@ -2499,6 +2499,21 @@ class TelegramBot extends EventEmitter {
   }
 
   /**
+   * Use this method to stores a message that can be sent by a user of a Mini App.
+   *
+   * @param {Number} userId Unique identifier of the target user
+   * @param {KeyboardButton} button A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot.
+   * @param {Object} [options] Optional form data to include in the request
+   * @return {Promise} On success, returns a [PreparedKeyboardButton](https://core.telegram.org/bots/api#preparedkeyboardbutton) object.
+   * @see https://core.telegram.org/bots/api#savepreparedkeyboardbutton
+   */
+  savePreparedKeyboardButton(userId, button, form = {}) {
+    form.user_id = userId;
+    form.button = stringify(button);
+    return this._request('savePreparedKeyboardButton', { form });
+  }
+
+  /**
    * Use this method to get the list of boosts added to a chat by a use.
    * Requires administrator rights in the chat
    *
