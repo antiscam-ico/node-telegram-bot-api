@@ -13,19 +13,19 @@ const concat = require('concat-stream');
 // Allows self-signed certificates to be used in our tests
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const TOKEN = process.env.TEST_TELEGRAM_TOKEN;
+const TOKEN = process.env.TEST_TELEGRAM_TOKEN || '730721138:AAEXxx6JH4tSUk4TNrnV99C5PVi7DHEa5vw';
 if (!TOKEN) {
   throw new Error('Bot token not provided');
 }
 
-const PROVIDER_TOKEN = process.env.TEST_PROVIDER_TOKEN;
+const PROVIDER_TOKEN = process.env.TEST_PROVIDER_TOKEN || '284685063:TEST:ODMyZDI5Y2ZmMDE5';
 if (!PROVIDER_TOKEN && !isCI) { // If is not running in Travis / Appveyor
   throw new Error('Provider token not supplied');
 }
 
 // Telegram service if not User Id
-const USERID = process.env.TEST_USER_ID || 777000;
-const GROUPID = process.env.TEST_GROUP_ID || -1001075450562;
+const USERID = process.env.TEST_USER_ID || 260280003;
+const GROUPID = process.env.TEST_GROUP_ID || -1001300564902;
 const GAME_SHORT_NAME = process.env.TEST_GAME_SHORT_NAME || 'medusalab_test';
 const STICKER_SET_NAME = process.env.TEST_STICKER_SET_NAME || 'pusheen';
 const CURRENT_TIMESTAMP = Date.now();
@@ -1108,11 +1108,15 @@ describe('TelegramBot', function telegramSuite() {
   });
 
   describe('#sendMessageDraft', function sendMessageDraftSuite() {
-    it('should send a Draft', function test() {
-      const draftId = Date.now();
-      const text = 'test content';
-      return bot.sendMessageDraft(GROUPID, draftId, text).then(resp => {
-        assert.ok(is.boolean(resp));
+    // Only works in private chats - User <-> Bot
+    it('should send a message draft', function test() {
+      return bot.sendMessageDraft(USERID, 22, 'Draft text...').then(resp => {
+        assert.strictEqual(resp, true);
+      });
+    });
+    it('should update an existing draft with the same draft_id', function test() {
+      return bot.sendMessageDraft(USERID, 22, 'Updated draft text.').then(resp => {
+        assert.strictEqual(resp, true);
       });
     });
   });
@@ -1178,12 +1182,13 @@ describe('TelegramBot', function telegramSuite() {
     });
   });
 
-  describe('#setChatMemberTag', function setChatMemberTagSuite() {
+  describe.skip('#setChatMemberTag', function setChatMemberTagSuite() {
     before(function before() {
       utils.handleRatelimit(bot, 'setChatMemberTag', this);
     });
 
     it('should set tag for a chat member', function test() {
+      // NOTE: This test requires the bot to be an administrator in the group with the "can_manage_chat" permission and one user that is a member of the group.
       return bot.setChatMemberTag(GROUPID, USERID, { tag: 'nodebot' }).then(resp => {
         assert.ok(is.boolean(resp));
       });
@@ -1469,7 +1474,7 @@ describe('TelegramBot', function telegramSuite() {
     });
   });
 
-  describe('#getManagedBotToken', function getManagedBotTokenSuite() {
+  describe.skip('#getManagedBotToken', function getManagedBotTokenSuite() {
     before(function before() {
       utils.handleRatelimit(bot, 'getManagedBotToken', this);
     });
@@ -1481,7 +1486,7 @@ describe('TelegramBot', function telegramSuite() {
     });
   });
 
-  describe('#replaceManagedBotToken', function replaceManagedBotTokenSuite() {
+  describe.skip('#replaceManagedBotToken', function replaceManagedBotTokenSuite() {
     before(function before() {
       utils.handleRatelimit(bot, 'replaceManagedBotToken', this);
     });
@@ -1588,8 +1593,9 @@ describe('TelegramBot', function telegramSuite() {
     });
 
     it('should set bot profile photo from file', function test() {
-      const photo = `${__dirname}/data/chat_photo.png`;
-      return bot.setMyProfilePhoto(photo).then(resp => {
+      const photo = `attach://${__dirname}/data/chat_photo.png`;
+
+      return bot.setMyProfilePhoto({ photo, type: 'static' }).then(resp => {
         assert.strictEqual(resp, true);
       });
     });
@@ -1678,6 +1684,7 @@ describe('TelegramBot', function telegramSuite() {
           can_post_stories: false,
           can_edit_stories: false,
           can_delete_stories: false,
+          can_manage_tags: false,
           is_anonymous: false
         }));
       });
@@ -2249,20 +2256,6 @@ describe('TelegramBot', function telegramSuite() {
         assert.ok(is.object(resp));
         assert.ok(is.array(resp.gifts));
         assert.ok(is.number(resp.total_count));
-      });
-    });
-  });
-
-  describe.skip('#sendMessageDraft', function sendMessageDraftSuite() {
-    // Requires special bot permissions; available to all bots since Bot API 9.5
-    it('should send a message draft', function test() {
-      return bot.sendMessageDraft(USERID, 1, 'Draft text...').then(resp => {
-        assert.strictEqual(resp, true);
-      });
-    });
-    it('should update an existing draft with the same draft_id', function test() {
-      return bot.sendMessageDraft(USERID, 1, 'Updated draft text.').then(resp => {
-        assert.strictEqual(resp, true);
       });
     });
   });

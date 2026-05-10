@@ -783,6 +783,7 @@ class TelegramBot extends EventEmitter {
     const chatJoinRequest = update.chat_join_request;
     const chatBoost = update.chat_boost;
     const removedChatBoost = update.removed_chat_boost;
+    const managedBot = update.managed_bot;
 
 
     if (message) {
@@ -908,6 +909,9 @@ class TelegramBot extends EventEmitter {
     } else if (removedChatBoost) {
       debug('Process Update removed_chat_boost %j', removedChatBoost);
       this.emit('removed_chat_boost', removedChatBoost);
+    } else if (managedBot) {
+      debug('Process Update managed_bot %j', managedBot);
+      this.emit('managed_bot', managedBot);
     }
   }
 
@@ -1809,6 +1813,8 @@ class TelegramBot extends EventEmitter {
    *
    * The bot must be an administrator in the chat for this to work and must have the can_manage_tags administrator right.
    *
+   * Note: If the user is a admin in the chat, then this method will fail with a 400 Bad Request error with the message "Bad Request: CHAT_ADMIN_REQUIRED".
+   *
    * @param {Number|String} chatId  Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
    * @param {Number} userId Unique identifier of the target user
    * @param {Object} [options] Additional Telegram query options
@@ -2691,7 +2697,7 @@ class TelegramBot extends EventEmitter {
   /**
    * Changes the profile photo of the bot.
    *
-   * @param {String|stream.Stream|Buffer} photo New profile photo.
+   * @param {InputProfilePhoto} photo The new profile photo to set
    * @param {Object} [options] Additional Telegram query options
    * @return {Promise} True on success
    * @see https://core.telegram.org/bots/api#setmyprofilephoto
@@ -2699,12 +2705,25 @@ class TelegramBot extends EventEmitter {
   setMyProfilePhoto(photo, options = {}) {
     const opts = {
       qs: options,
+      formData: {},
     };
 
+    if (!photo.type) {
+      throw new Error('InputProfilePhoto must have a type');
+    }
+
+    const media = photo.photo || photo.animation;
+
+    if (!media) {
+      throw new Error('InputProfilePhoto must have a photo or animation field');
+    }
+
     try {
-      const sendData = this._formatSendData('photo', photo);
-      opts.formData = sendData[0];
-      opts.qs.photo = sendData[1];
+      const [formData] = this._formatSendData(photo.type, media.replace(/^attach:\/\/?/, ''));
+
+      opts.formData[photo.type] = formData[photo.type];
+
+      opts.qs.thumbnail = `attach://${photo.type}`;
     } catch (ex) {
       return Promise.reject(ex);
     }
@@ -2906,7 +2925,7 @@ class TelegramBot extends EventEmitter {
   /**
    * Use this method to approve a suggested post in a direct messages chat.
    *
-   * The bot must have the 'can_post_messages' administrator right in the corresponding channel chat. 
+   * The bot must have the 'can_post_messages' administrator right in the corresponding channel chat.
    *
    * @param {Number|String} chatId  Unique identifier for the group/channel
    * @param {Number} messageId Identifier of the original message with the suggested post

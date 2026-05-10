@@ -1201,6 +1201,8 @@ Use this method to set a tag for a regular member in a group or a supergroup.
 
 The bot must be an administrator in the chat for this to work and must have the can_manage_tags administrator right.
 
+Note: If the user is a admin in the chat, then this method will fail with a 400 Bad Request error with the message "Bad Request: CHAT_ADMIN_REQUIRED".
+
 **Kind**: instance method of [<code>TelegramBot</code>](#TelegramBot)  
 **Returns**: <code>Promise</code> - True on success  
 **See**: https://core.telegram.org/bots/api#setchatmembertag  
@@ -2081,7 +2083,7 @@ Changes the profile photo of the bot.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| photo | <code>String</code> \| <code>stream.Stream</code> \| <code>Buffer</code> | New profile photo. |
+| photo | <code>InputProfilePhoto</code> | The new profile photo to set |
 | [options] | <code>Object</code> | Additional Telegram query options |
 
 <a name="TelegramBot+removeMyProfilePhoto"></a>
